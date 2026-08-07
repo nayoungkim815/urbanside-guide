@@ -311,14 +311,32 @@
 
   footer{padding:40px 24px 0;font-size:13px;color:var(--sub-ink);text-align:center;}
 
-  .toast{
-    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
-    background:var(--ink);color:#fff;font-size:13.5px;font-weight:600;
-    padding:12px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,0.25);
-    opacity:0;pointer-events:none;transition:opacity .2s ease, transform .2s ease;
-    z-index:200;white-space:nowrap;
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,0.45);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .2s ease;
+    z-index:200;padding:24px;
   }
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .modal-overlay.show{opacity:1;pointer-events:auto;}
+  .modal-box{
+    background:#fff;border-radius:20px;padding:32px 28px 24px;
+    max-width:320px;width:100%;text-align:center;
+    transform:scale(0.92);transition:transform .2s ease;
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+  }
+  .modal-overlay.show .modal-box{transform:scale(1);}
+  .modal-icon{
+    width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;
+    margin:0 auto 16px;
+  }
+  .modal-box p{margin:0;font-size:15px;color:var(--ink);font-weight:600;line-height:1.5;}
+  .modal-box .modal-sub{margin-top:6px;font-size:13px;color:var(--sub-ink);font-weight:500;}
+  .modal-close-btn{
+    margin-top:20px;width:100%;background:var(--ink);color:#fff;border:none;
+    font-size:14px;font-weight:700;padding:12px;border-radius:12px;cursor:pointer;font-family:inherit;
+  }
+  .modal-close-btn:active{opacity:0.85;}
 
   @media (max-width:640px){
     .welcome-note{padding:32px 20px 4px;}
@@ -672,7 +690,14 @@
   <footer class="wrap">COUCH POTATO × URBANSIDE — 26FW CREATOR GUIDE / DRAFT V1</footer>
 
   <button type="button" class="to-top" id="toTopBtn" aria-label="맨 위로">↑</button>
-  <div class="toast" id="toast">준비중입니다.</div>
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+      <div class="modal-icon">⏳</div>
+      <p>준비중입니다.</p>
+      <p class="modal-sub">링크가 확정되면 순차적으로 업데이트될 예정입니다.</p>
+      <button type="button" class="modal-close-btn" id="modalCloseBtn">확인</button>
+    </div>
+  </div>
 
 <script>
 (function(){
@@ -828,19 +853,26 @@
     if(cb) cb(ok);
   }
 
-  var toastEl = document.getElementById('toast');
-  var toastTimer = null;
-  function showToast(msg){
-    if(!toastEl) return;
-    toastEl.textContent = msg;
-    toastEl.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 1800);
+  var modalOverlay = document.getElementById('modalOverlay');
+  var modalCloseBtn = document.getElementById('modalCloseBtn');
+  function openModal(){
+    if(!modalOverlay) return;
+    modalOverlay.classList.add('show');
+  }
+  function closeModal(){
+    if(!modalOverlay) return;
+    modalOverlay.classList.remove('show');
+  }
+  if(modalCloseBtn){ modalCloseBtn.addEventListener('click', closeModal); }
+  if(modalOverlay){
+    modalOverlay.addEventListener('click', function(e){
+      if(e.target === modalOverlay){ closeModal(); }
+    });
   }
   document.querySelectorAll('a.coming-soon').forEach(function(link){
     link.addEventListener('click', function(e){
       e.preventDefault();
-      showToast('준비중입니다.');
+      openModal();
     });
   });
 
