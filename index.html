@@ -218,6 +218,14 @@
   .mod-detail-card p{margin:0 0 10px;font-size:13px;color:var(--sub-ink);line-height:1.55;}
   .mod-detail-card ul{margin:0;padding-left:18px;font-size:13px;color:var(--sub-ink);}
   .mod-detail-card li{margin-bottom:6px;}
+  .mod-example-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .mod-example-btn{
+    display:inline-flex;align-items:center;gap:5px;padding:7px 15px;border-radius:999px;
+    font-size:12px;font-weight:700;color:#fff;background:var(--accent);text-decoration:none;
+    transition:opacity .15s ease;
+  }
+  .mod-example-btn:active{opacity:0.8;}
+  .mod-example-empty{font-size:12px;color:var(--sub-ink);}
   @media (max-width:640px){ .mod-detail-grid{grid-template-columns:1fr;} }
 
   .mod-locked-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
@@ -727,6 +735,7 @@
           <h4 id="modPortfolioTitle"></h4>
           <p id="modPortfolioDesc"></p>
           <ul id="modPortfolioList"></ul>
+          <div class="mod-example-row" id="modExampleRow"></div>
         </div>
       </div>
 
@@ -1061,6 +1070,21 @@
     }
   };
 
+  var EXAMPLE_LINKS = {
+    short: {
+      launch: ['https://www.youtube.com/shorts/5Sg3g46vStw', 'https://www.youtube.com/shorts/WHxNQcjGJj8'],
+      detail: ['https://www.youtube.com/shorts/-tcG23eV7CM', 'https://www.youtube.com/shorts/s8yAZgCY2oM'],
+      outdoor: ['https://www.youtube.com/shorts/_NWuaAP-1Lo', 'https://www.youtube.com/shorts/tAnLWPCY4A4'],
+      usp: ['https://www.youtube.com/shorts/P5o_K4Iy_9A']
+    },
+    long: {
+      launch: ['https://www.youtube.com/watch?v=BWrKXZGLsGc'],
+      detail: ['https://youtu.be/X7VUJ5VcxfU?si=V8pEH4YSqe3pUPfZ'],
+      outdoor: ['https://www.youtube.com/watch?v=NUppZ2I3TTY&t=377s'],
+      usp: ['https://youtu.be/E2lz2KgLwNc?si=5qpB0bX51nQFV8jK']
+    }
+  };
+
   var modState = { format: 'short', portfolio: 'launch' };
   var modLinkBox = document.getElementById('modLinkBox');
   var modLinkSummary = document.getElementById('modLinkSummary');
@@ -1074,6 +1098,7 @@
   var modPortfolioTitle = document.getElementById('modPortfolioTitle');
   var modPortfolioDesc = document.getElementById('modPortfolioDesc');
   var modPortfolioList = document.getElementById('modPortfolioList');
+  var modExampleRow = document.getElementById('modExampleRow');
 
   function buildModLink(){
     var url = new URL(window.location.href);
@@ -1094,6 +1119,29 @@
     });
   }
 
+  function renderExampleLinks(){
+    if(!modExampleRow) return;
+    var group = EXAMPLE_LINKS[modState.format];
+    var links = group ? group[modState.portfolio] : null;
+    modExampleRow.innerHTML = '';
+    if(links && links.length){
+      links.forEach(function(url, idx){
+        var a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'mod-example-btn';
+        a.textContent = links.length > 1 ? ('예시 보기 ' + (idx + 1)) : '예시 보기';
+        modExampleRow.appendChild(a);
+      });
+    } else {
+      var span = document.createElement('span');
+      span.className = 'mod-example-empty';
+      span.textContent = '예시 영상 준비중';
+      modExampleRow.appendChild(span);
+    }
+  }
+
   function renderModPreview(){
     var f = FORMAT_MODULES[modState.format];
     var p = PORTFOLIO_MODULES[modState.portfolio];
@@ -1103,6 +1151,7 @@
     if(modPortfolioTitle){ modPortfolioTitle.textContent = p.label; }
     if(modPortfolioDesc){ modPortfolioDesc.textContent = p.desc; }
     fillList(modPortfolioList, p.items);
+    renderExampleLinks();
     if(modLinkBox){ modLinkBox.textContent = buildModLink(); }
     if(modLinkSummary){
       modLinkSummary.innerHTML = '선택한 모듈: <strong>' + f.label + '</strong> · <strong>' + p.label + '</strong>';
