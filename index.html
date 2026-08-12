@@ -1125,6 +1125,7 @@
     var links = group ? group[modState.portfolio] : null;
     modExampleRow.innerHTML = '';
     if(links && links.length){
+      modExampleRow.style.display = 'flex';
       links.forEach(function(url, idx){
         var a = document.createElement('a');
         a.href = url;
@@ -1135,10 +1136,7 @@
         modExampleRow.appendChild(a);
       });
     } else {
-      var span = document.createElement('span');
-      span.className = 'mod-example-empty';
-      span.textContent = '예시 영상 준비중';
-      modExampleRow.appendChild(span);
+      modExampleRow.style.display = 'none';
     }
   }
 
