@@ -181,6 +181,57 @@
   .guide-card ul{margin:0;padding-left:18px;font-size:14px;color:var(--sub-ink);}
   .guide-card li{margin-bottom:6px;}
 
+  .rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0 28px;}
+  .rule-card{background:var(--bg-soft);border-radius:14px;padding:16px 18px;}
+  .rule-tag{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.05em;margin-bottom:6px;}
+  .rule-card p{margin:0;font-size:13.5px;color:var(--ink);font-weight:600;line-height:1.5;}
+  @media (max-width:640px){ .rules-grid{grid-template-columns:1fr;} }
+
+  .mod-group{margin-bottom:18px;}
+  .mod-group-label{font-size:12.5px;font-weight:700;color:var(--sub-ink);margin-bottom:10px;letter-spacing:0.02em;}
+  .mod-group .chip-row{margin-bottom:0;}
+  .mod-pill{
+    display:inline-flex;align-items:center;padding:8px 15px;border-radius:999px;
+    font-size:12.5px;font-weight:700;color:var(--sub-ink);cursor:pointer;
+    background:var(--bg-soft);border:1px solid var(--line);font-family:inherit;
+    transition:all .15s ease;
+  }
+  .mod-pill.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .mod-pill:active{transform:scale(0.96);}
+
+  .mod-preview{background:var(--bg-soft);border-radius:16px;padding:4px 4px 4px;margin-top:22px;overflow:hidden;}
+  .mod-preview-head{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 18px;font-size:12.5px;font-weight:700;color:var(--sub-ink);letter-spacing:0.02em;
+  }
+  .mod-copy-btn{
+    background:var(--accent);color:#fff;border:none;font-family:inherit;
+    font-size:12px;font-weight:700;padding:7px 14px;border-radius:999px;cursor:pointer;
+    transition:opacity .15s ease;
+  }
+  .mod-copy-btn:active{opacity:0.8;}
+  .mod-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 4px;}
+  .mod-detail-card{background:var(--bg-soft);border-radius:16px;padding:20px 20px;}
+  .mod-detail-tag{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.04em;margin-bottom:8px;text-transform:uppercase;}
+  .mod-detail-card h4{margin:0 0 6px;font-size:15px;color:var(--ink);font-weight:700;}
+  .mod-detail-card p{margin:0 0 10px;font-size:13px;color:var(--sub-ink);line-height:1.55;}
+  .mod-detail-card ul{margin:0;padding-left:18px;font-size:13px;color:var(--sub-ink);}
+  .mod-detail-card li{margin-bottom:6px;}
+  @media (max-width:640px){ .mod-detail-grid{grid-template-columns:1fr;} }
+
+  .mod-applied-note{
+    background:var(--accent-soft);color:#0b4f9e;border-radius:12px;padding:12px 16px;
+    font-size:13px;font-weight:600;margin-bottom:18px;
+  }
+
+  .mod-link-box{
+    margin:0;background:#fff;border-radius:12px;padding:14px 16px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12.5px;color:var(--accent);line-height:1.5;word-break:break-all;
+  }
+  .mod-link-summary{padding:12px 16px 16px;font-size:12.5px;color:var(--sub-ink);}
+  .mod-link-summary strong{color:var(--ink);}
+
   .cond-list{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:8px;}
   .cond-list li{
     background:var(--bg-soft);border-radius:12px;padding:14px 18px;
@@ -217,6 +268,27 @@
 
   @media (max-width:640px){
     .dodont-grid{grid-template-columns:1fr;}
+  }
+
+  .brand-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 30px;}
+  .brand-card{background:var(--bg-soft);border-radius:16px;padding:20px 18px;}
+  .brand-card-tag{font-size:13.5px;font-weight:700;color:var(--accent);margin-bottom:8px;letter-spacing:-0.01em;}
+  .brand-card p{margin:0;font-size:13px;color:var(--sub-ink);line-height:1.55;}
+
+  .season-quote{
+    background:radial-gradient(120% 140% at 50% 0%, #2b2b2d 0%, #000000 65%);
+    border-radius:18px;padding:28px 24px;margin:18px 0 20px;text-align:center;
+  }
+  .season-quote-label{font-size:11.5px;font-weight:700;letter-spacing:0.05em;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
+  .season-quote-text{margin:0;font-size:17px;font-weight:700;color:#fff;line-height:1.5;letter-spacing:-0.01em;}
+
+  .material-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin:18px 0 8px;}
+  .material-card{background:var(--bg-soft);border-radius:16px;padding:18px 20px;}
+  .material-card .m-label{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;letter-spacing:0.02em;}
+  .material-card .m-desc{font-size:12.5px;color:var(--sub-ink);line-height:1.5;}
+
+  @media (max-width:640px){
+    .brand-grid{grid-template-columns:1fr;}
   }
 
   .ops-timeline{list-style:none;margin:0 0 14px;padding:0;}
@@ -421,6 +493,55 @@
         ※ 사전에 궁금하신 점이나 추가 문의는 VIP 초청 받으신 어반사이드 SNS 채널 또는 <a href="mailto:contact@milimeal.com" style="color:var(--accent);">contact@milimeal.com</a>로 연락주시면 답변 도와드리겠습니다.
       </div>
       <p style="margin-top:14px;">이 문서는 캠프에 참여하는 크리에이터가 참고할 일정, 콘텐츠 방향, 혜택, 신청 절차를 안내합니다.</p>
+
+      <h3 class="sub-h">브랜드 소개</h3>
+      <p>어반사이드는 아웃도어 환경에서 <strong>'몰입(Zero In)'</strong>의 가치를 제안하는 종합 아웃도어·라이프테크 브랜드입니다.</p>
+      <p style="margin-top:10px;">'Zero In'의 사전적 의미는 '조준하다'. 아웃도어 활동을 통해 자연, 사람, 그리고 나 자신에 온전히 집중하는 순간 — 그 본질에 닿도록 돕습니다. 본질에 닿는 것을 방해하는 3가지 요소를 <strong>'Zero'</strong>로 만들어 갑니다.</p>
+      <div class="brand-grid">
+        <div class="brand-card">
+          <div class="brand-card-tag">Zero Limit</div>
+          <p>고기능성을 설계하여 스스로 한계를 극복할 수 있도록 돕습니다.</p>
+        </div>
+        <div class="brand-card">
+          <div class="brand-card-tag">Zero Gravity</div>
+          <p>경량성을 실현하여 사용자의 피로도를 최소화합니다.</p>
+        </div>
+        <div class="brand-card">
+          <div class="brand-card-tag">Zero Boundary</div>
+          <p>아웃도어와 일상의 구분을 없애는 디자인으로 언제든 아웃도어에 몰입할 수 있게 합니다.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-h">26FW 컬렉션</h3>
+      <p>이번 시즌은 혹한 환경에서도 활동의 자유를 잃지 않는 것을 핵심 목표로 삼았습니다.</p>
+      <div class="season-quote">
+        <div class="season-quote-label">26FW Season Concept</div>
+        <p class="season-quote-text">"겨울에도 활동의 자유를 — 보온과 퍼포먼스의 양립"</p>
+      </div>
+      <p>1000FP 거위다운, PrimaLoft®, OCTA®, POLARTEC® Alpha Direct, KARUISHI®, MERINO WOOL 등 최고 수준의 보온 소재로 활동성과 레이어링 편의성을 극대화했습니다. 단순한 '따뜻한 옷'이 아닌, 겨울 활동을 가능하게 하는 퍼포먼스 어패럴입니다.</p>
+      <div class="material-grid">
+        <div class="material-card">
+          <div class="m-label">PREMIUM INSULATION</div>
+          <div class="m-desc">1000FP 거위다운 · PrimaLoft® · OCTA® 최상급 보온 소재</div>
+        </div>
+        <div class="material-card">
+          <div class="m-label">ACTIVE LAYERING</div>
+          <div class="m-desc">활동 중에도 쾌적한 레이어링 시스템 구축</div>
+        </div>
+        <div class="material-card">
+          <div class="m-label">PACKABLE DOWN</div>
+          <div class="m-desc">패커블 설계로 여행·이동 중 즉시 대응</div>
+        </div>
+        <div class="material-card">
+          <div class="m-label">BREATHABLE WARM</div>
+          <div class="m-desc">POLARTEC® Alpha Direct — 활동 중에도 숨쉬는 보온</div>
+        </div>
+        <div class="material-card">
+          <div class="m-label">NATURAL COMFORT</div>
+          <div class="m-desc">MERINO WOOL 자연 온도 조절로 도심·아웃도어 경계 없는 착용</div>
+        </div>
+      </div>
+      <p style="margin-top:14px;font-size:13px;color:var(--sub-ink);">※ 26FW 어패럴 상세 정보(제품 상세·착장 포인트·사이즈·소재)는 아래 <a href="#agenda-3" style="color:var(--accent);font-weight:700;">03·콘텐츠 가이드</a>의 제품소개서에서 확인하실 수 있습니다.</p>
     </section>
 
     <section id="agenda-2">
@@ -475,6 +596,27 @@
         ※ 인스타그램·유튜브 크리에이터 공통 필수사항: 어반사이드 어패럴 인스타그램 스토리 2회 이상 업로드(행사 내 이벤트 참여 명목 제외), 스토리 중 1건은 어반사이드 26FW 어패럴 하이퍼링크 스티커 필수 첨부
       </div>
 
+      <h3 class="sub-h">협업 가이드라인</h3>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-tag">HASHTAG</div>
+          <p>#어반사이드 #URBANSIDE #26FW</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-tag">CREDIT</div>
+          <p>브랜드 계정 @urbanside.kr 태그</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-tag">THUMBNAIL</div>
+          <p>어반사이드 로고 없이, 제품 착장이 잘 보이는 컷</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-tag">TIMING</div>
+          <p>컨펌 후 업로드, 시안 공유 필수</p>
+        </div>
+      </div>
+
+      <h3 class="sub-h">채널별 콘텐츠 가이드</h3>
       <div class="chip-row">
         <button class="ch-pill ig active" data-guide="instagram">인스타그램</button>
         <button class="ch-pill yt" data-guide="youtube">유튜브</button>
@@ -532,6 +674,56 @@
             <li>초안 피드백 반영 전 임의 선(先) 게시, 필수 해시태그·계정 태그 누락</li>
           </ul>
         </div>
+      </div>
+
+      <h3 class="sub-h">크리에이터별 맞춤 가이드 발송</h3>
+      <p class="body-soft" style="margin-top:-4px;">크리에이터의 콘텐츠 형태와 포트폴리오 성격에 맞는 모듈을 선택하면, 해당 조합만 자동으로 열리는 맞춤 링크가 만들어집니다.</p>
+
+      <div class="mod-applied-note" id="modAppliedNote" style="display:none;">🎯 링크로 전달받은 맞춤 모듈이 자동으로 선택되어 있습니다</div>
+
+      <div class="mod-group">
+        <div class="mod-group-label">콘텐츠 형태</div>
+        <div class="chip-row">
+          <button class="mod-pill active" data-group="format" data-mod="short">숏폼(릴스/쇼츠)</button>
+          <button class="mod-pill" data-group="format" data-mod="feed">피드형(이미지)</button>
+          <button class="mod-pill" data-group="format" data-mod="long">롱폼(유튜브 등)</button>
+        </div>
+      </div>
+
+      <div class="mod-group">
+        <div class="mod-group-label">포트폴리오 성격</div>
+        <div class="chip-row">
+          <button class="mod-pill active" data-group="portfolio" data-mod="launch">런칭 소식 소구</button>
+          <button class="mod-pill" data-group="portfolio" data-mod="detail">제품 상세 리뷰</button>
+          <button class="mod-pill" data-group="portfolio" data-mod="outdoor">야외 리뷰</button>
+          <button class="mod-pill" data-group="portfolio" data-mod="usp">USP 소구</button>
+          <button class="mod-pill" data-group="portfolio" data-mod="free">크리에이터 자율</button>
+          <button class="mod-pill" data-group="portfolio" data-mod="office">사무실 방문형</button>
+        </div>
+      </div>
+
+      <div class="mod-detail-grid">
+        <div class="mod-detail-card">
+          <div class="mod-detail-tag">콘텐츠 형태</div>
+          <h4 id="modFormatTitle"></h4>
+          <p id="modFormatDesc"></p>
+          <ul id="modFormatList"></ul>
+        </div>
+        <div class="mod-detail-card">
+          <div class="mod-detail-tag">포트폴리오 성격</div>
+          <h4 id="modPortfolioTitle"></h4>
+          <p id="modPortfolioDesc"></p>
+          <ul id="modPortfolioList"></ul>
+        </div>
+      </div>
+
+      <div class="mod-preview">
+        <div class="mod-preview-head">
+          <span>맞춤 가이드 링크</span>
+          <button type="button" class="mod-copy-btn" id="modCopyBtn" data-copied="0">링크 복사</button>
+        </div>
+        <div class="mod-link-box" id="modLinkBox"></div>
+        <div class="mod-link-summary" id="modLinkSummary"></div>
       </div>
 
       <h3 class="sub-h">콘텐츠 제작 시 활용 소스</h3>
@@ -775,6 +967,196 @@
       });
     });
   });
+
+  var FORMAT_MODULES = {
+    short: {
+      label: '숏폼(릴스/쇼츠)',
+      desc: '15~30초, 세로 9:16. 짧은 시간 안에 임팩트 있게 전달되도록 컷 전환 중심으로 빠르게 구성해주세요.',
+      items: [
+        '오프닝 3초 안에 제품이 화면에 등장',
+        '착장 포인트 1~2가지를 명확히 보여주는 컷 위주 구성',
+        '자막/캡션에 시즌 키워드 1개 이상 포함',
+        '사운드 온 상태로 촬영 권장'
+      ]
+    },
+    feed: {
+      label: '피드형(이미지 포스팅)',
+      desc: '3~5장 구성, 4:5 비율. 한 장씩 넘겨봐도 자연스럽게 이어지도록 착장 디테일과 무드를 함께 보여주세요.',
+      items: [
+        '대표 이미지 1장 + 디테일 컷 2~4장',
+        '자연광 촬영 권장, 톤은 너무 과하게 보정하지 않기',
+        '캡션에 소재/기능 포인트 1가지 이상 언급'
+      ]
+    },
+    long: {
+      label: '롱폼(유튜브 등)',
+      desc: '10분 이상. 짧은 포맷에서는 담기 어려운 실사용 맥락과 디테일을 충분한 호흡으로 풀어주세요.',
+      items: [
+        '착용 전/중/후 흐름, 혹은 하루 일과 속 자연스러운 등장으로 구성',
+        '소재·기능에 대한 설명 구간을 별도로 포함 (최소 1분 이상)',
+        '브랜드/제품명 음성 언급 2회 이상',
+        '캡션은 1차 초안 작성 후 전달, 검수 필수'
+      ]
+    }
+  };
+
+  var PORTFOLIO_MODULES = {
+    launch: {
+      label: '26FW 런칭 소식 소구',
+      desc: '신규 컬렉션 출시 소식을 알리는 데 초점을 맞춘 구성입니다.',
+      items: [
+        '시즌 컬렉션 키워드 1개 이상 언급',
+        '출시일/구매처 등 안내 정보 포함',
+        '기대감을 주는 티저형 톤 유지'
+      ]
+    },
+    detail: {
+      label: '제품 상세 리뷰',
+      desc: '소재, 핏, 기능을 꼼꼼히 짚어주는 구성입니다.',
+      items: [
+        '소재/기능 클로즈업 컷 포함',
+        '사이즈·핏 코멘트 1가지 이상',
+        '실사용 상황(날씨/활동) 언급'
+      ]
+    },
+    outdoor: {
+      label: '야외 리뷰',
+      desc: '실제 아웃도어 환경에서의 활용을 보여주는 구성입니다.',
+      items: [
+        '야외 활동 장면 중심 촬영',
+        '보온/방풍 등 기능 체감 코멘트',
+        '자연광, 실외 배경 활용'
+      ]
+    },
+    usp: {
+      label: 'USP 소구',
+      desc: '제품의 핵심 차별점 한 가지에 집중해 설득력 있게 전달하는 구성입니다.',
+      items: [
+        '핵심 USP 1가지를 명확하게 강조',
+        '전후 비교, 실험 등 근거 제시 방식 활용 가능',
+        '스펙/소재 등 구체적 근거 함께 언급'
+      ]
+    },
+    free: {
+      label: '크리에이터 자율',
+      desc: '형식 제약 없이 크리에이터 고유의 스타일로 자유롭게 구성합니다.',
+      items: [
+        '협업 가이드라인 범위 내에서 자유 구성',
+        '크리에이터 특유의 톤·문법 유지',
+        '제품 노출은 콘텐츠 흐름 안에서 자연스럽게'
+      ]
+    },
+    office: {
+      label: '사무실 방문형',
+      desc: '브랜드 오피스/쇼룸을 방문해 소개하는 브이로그 형식입니다.',
+      items: [
+        '오피스·쇼룸 공간 소개 포함',
+        '신제품 시착 장면 포함',
+        '브랜드 무드를 자연스럽게 노출'
+      ]
+    }
+  };
+
+  var modState = { format: 'short', portfolio: 'launch' };
+  var modLinkBox = document.getElementById('modLinkBox');
+  var modLinkSummary = document.getElementById('modLinkSummary');
+  var modAppliedNote = document.getElementById('modAppliedNote');
+  var modFormatTitle = document.getElementById('modFormatTitle');
+  var modFormatDesc = document.getElementById('modFormatDesc');
+  var modFormatList = document.getElementById('modFormatList');
+  var modPortfolioTitle = document.getElementById('modPortfolioTitle');
+  var modPortfolioDesc = document.getElementById('modPortfolioDesc');
+  var modPortfolioList = document.getElementById('modPortfolioList');
+
+  function buildModLink(){
+    var url = new URL(window.location.href);
+    url.search = '';
+    url.searchParams.set('format', modState.format);
+    url.searchParams.set('portfolio', modState.portfolio);
+    url.hash = 'agenda-3';
+    return url.toString();
+  }
+
+  function fillList(ulEl, items){
+    if(!ulEl) return;
+    ulEl.innerHTML = '';
+    items.forEach(function(t){
+      var li = document.createElement('li');
+      li.textContent = t;
+      ulEl.appendChild(li);
+    });
+  }
+
+  function renderModPreview(){
+    var f = FORMAT_MODULES[modState.format];
+    var p = PORTFOLIO_MODULES[modState.portfolio];
+    if(modFormatTitle){ modFormatTitle.textContent = f.label; }
+    if(modFormatDesc){ modFormatDesc.textContent = f.desc; }
+    fillList(modFormatList, f.items);
+    if(modPortfolioTitle){ modPortfolioTitle.textContent = p.label; }
+    if(modPortfolioDesc){ modPortfolioDesc.textContent = p.desc; }
+    fillList(modPortfolioList, p.items);
+    if(modLinkBox){ modLinkBox.textContent = buildModLink(); }
+    if(modLinkSummary){
+      modLinkSummary.innerHTML = '선택한 모듈: <strong>' + f.label + '</strong> · <strong>' + p.label + '</strong>';
+    }
+  }
+
+  function applyModParamsFromURL(){
+    var params = new URLSearchParams(window.location.search);
+    var f = params.get('format');
+    var p = params.get('portfolio');
+    var applied = false;
+    if(f && FORMAT_MODULES[f]){ modState.format = f; applied = true; }
+    if(p && PORTFOLIO_MODULES[p]){ modState.portfolio = p; applied = true; }
+    if(applied){
+      document.querySelectorAll('.mod-pill').forEach(function(pill){
+        pill.classList.toggle('active', pill.dataset.mod === modState[pill.dataset.group]);
+      });
+      if(modAppliedNote){ modAppliedNote.style.display = 'block'; }
+    }
+    return applied;
+  }
+
+  document.querySelectorAll('.mod-pill').forEach(function(pill){
+    pill.addEventListener('click', function(){
+      var group = pill.dataset.group;
+      document.querySelectorAll('.mod-pill[data-group="' + group + '"]').forEach(function(p){
+        p.classList.remove('active');
+      });
+      pill.classList.add('active');
+      modState[group] = pill.dataset.mod;
+      if(modAppliedNote){ modAppliedNote.style.display = 'none'; }
+      renderModPreview();
+    });
+  });
+
+  applyModParamsFromURL();
+  renderModPreview();
+
+  var modCopyBtn = document.getElementById('modCopyBtn');
+  if(modCopyBtn){
+    modCopyBtn.addEventListener('click', function(){
+      var link = buildModLink();
+      function showCopied(){
+        var original = modCopyBtn.textContent;
+        modCopyBtn.textContent = '복사됨 ✓';
+        setTimeout(function(){ modCopyBtn.textContent = original; }, 1500);
+      }
+      function showFailed(){
+        var original = modCopyBtn.textContent;
+        modCopyBtn.textContent = '길게 눌러 복사';
+        setTimeout(function(){ modCopyBtn.textContent = original; }, 1800);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(link).then(showCopied).catch(function(){
+          fallbackCopy(link, function(ok){ ok ? showCopied() : showFailed(); });
+        });
+      } else {
+        fallbackCopy(link, function(ok){ ok ? showCopied() : showFailed(); });
+      }
+    });
+  }
 
   var lodgeBtn = document.getElementById('lodgeInfoBtn');
   var lodgePopup = document.getElementById('lodgeInfoPopup');
