@@ -219,6 +219,12 @@
   .mod-detail-card li{margin-bottom:6px;}
   @media (max-width:640px){ .mod-detail-grid{grid-template-columns:1fr;} }
 
+  .mod-locked-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
+  .mod-locked-badge{
+    display:inline-flex;align-items:center;padding:8px 15px;border-radius:999px;
+    font-size:12.5px;font-weight:700;color:#fff;background:var(--ink);
+  }
+
   .mod-applied-note{
     background:var(--accent-soft);color:#0b4f9e;border-radius:12px;padding:12px 16px;
     font-size:13px;font-weight:600;margin-bottom:18px;
@@ -677,27 +683,33 @@
       </div>
 
       <h3 class="sub-h">크리에이터별 맞춤 가이드 발송</h3>
-      <p class="body-soft" style="margin-top:-4px;">크리에이터의 콘텐츠 형태와 포트폴리오 성격에 맞는 모듈을 선택하면, 해당 조합만 자동으로 열리는 맞춤 링크가 만들어집니다.</p>
 
-      <div class="mod-applied-note" id="modAppliedNote" style="display:none;">🎯 링크로 전달받은 맞춤 모듈이 자동으로 선택되어 있습니다</div>
-
-      <div class="mod-group">
-        <div class="mod-group-label">콘텐츠 형태</div>
-        <div class="chip-row">
-          <button class="mod-pill active" data-group="format" data-mod="short">숏폼(릴스/쇼츠)</button>
-          <button class="mod-pill" data-group="format" data-mod="feed">피드형(이미지)</button>
-          <button class="mod-pill" data-group="format" data-mod="long">롱폼(유튜브 등)</button>
-        </div>
+      <div class="mod-applied-note" id="modAppliedNote" style="display:none;">
+        🎯 이 링크로 전달된 맞춤 가이드입니다 — 아래 두 항목만 확인해주세요.
       </div>
+      <div class="mod-locked-badges" id="modLockedBadges" style="display:none;"></div>
 
-      <div class="mod-group">
-        <div class="mod-group-label">포트폴리오 성격</div>
-        <div class="chip-row">
-          <button class="mod-pill active" data-group="portfolio" data-mod="launch">런칭 소식 소구</button>
-          <button class="mod-pill" data-group="portfolio" data-mod="detail">제품 상세 리뷰</button>
-          <button class="mod-pill" data-group="portfolio" data-mod="outdoor">야외 리뷰</button>
-          <button class="mod-pill" data-group="portfolio" data-mod="usp">USP 소구</button>
-          <button class="mod-pill" data-group="portfolio" data-mod="free">크리에이터 자율</button>
+      <div id="modBuilderControls">
+        <p class="body-soft" style="margin-top:-4px;">크리에이터의 콘텐츠 형태와 포트폴리오 성격에 맞는 모듈을 선택하면, 해당 조합만 자동으로 열리는 맞춤 링크가 만들어집니다.</p>
+
+        <div class="mod-group">
+          <div class="mod-group-label">콘텐츠 형태</div>
+          <div class="chip-row">
+            <button class="mod-pill active" data-group="format" data-mod="short">숏폼(릴스/쇼츠)</button>
+            <button class="mod-pill" data-group="format" data-mod="feed">피드형(이미지)</button>
+            <button class="mod-pill" data-group="format" data-mod="long">롱폼(유튜브 등)</button>
+          </div>
+        </div>
+
+        <div class="mod-group">
+          <div class="mod-group-label">포트폴리오 성격</div>
+          <div class="chip-row">
+            <button class="mod-pill active" data-group="portfolio" data-mod="launch">런칭 소식 소구</button>
+            <button class="mod-pill" data-group="portfolio" data-mod="detail">제품 상세 리뷰</button>
+            <button class="mod-pill" data-group="portfolio" data-mod="outdoor">야외 리뷰</button>
+            <button class="mod-pill" data-group="portfolio" data-mod="usp">USP 소구</button>
+            <button class="mod-pill" data-group="portfolio" data-mod="free">크리에이터 자율</button>
+          </div>
         </div>
       </div>
 
@@ -716,7 +728,7 @@
         </div>
       </div>
 
-      <div class="mod-preview">
+      <div class="mod-preview" id="modPreview">
         <div class="mod-preview-head">
           <span>맞춤 가이드 링크</span>
           <button type="button" class="mod-copy-btn" id="modCopyBtn" data-copied="0">링크 복사</button>
@@ -1051,6 +1063,9 @@
   var modLinkBox = document.getElementById('modLinkBox');
   var modLinkSummary = document.getElementById('modLinkSummary');
   var modAppliedNote = document.getElementById('modAppliedNote');
+  var modLockedBadges = document.getElementById('modLockedBadges');
+  var modBuilderControls = document.getElementById('modBuilderControls');
+  var modPreview = document.getElementById('modPreview');
   var modFormatTitle = document.getElementById('modFormatTitle');
   var modFormatDesc = document.getElementById('modFormatDesc');
   var modFormatList = document.getElementById('modFormatList');
@@ -1090,6 +1105,18 @@
     if(modLinkSummary){
       modLinkSummary.innerHTML = '선택한 모듈: <strong>' + f.label + '</strong> · <strong>' + p.label + '</strong>';
     }
+    if(modLockedBadges){
+      modLockedBadges.innerHTML =
+        '<span class="mod-locked-badge">' + f.label + '</span>' +
+        '<span class="mod-locked-badge">' + p.label + '</span>';
+    }
+  }
+
+  function setLockedView(locked){
+    if(modBuilderControls){ modBuilderControls.style.display = locked ? 'none' : ''; }
+    if(modPreview){ modPreview.style.display = locked ? 'none' : ''; }
+    if(modLockedBadges){ modLockedBadges.style.display = locked ? 'flex' : 'none'; }
+    if(modAppliedNote){ modAppliedNote.style.display = locked ? 'block' : 'none'; }
   }
 
   function applyModParamsFromURL(){
@@ -1103,8 +1130,8 @@
       document.querySelectorAll('.mod-pill').forEach(function(pill){
         pill.classList.toggle('active', pill.dataset.mod === modState[pill.dataset.group]);
       });
-      if(modAppliedNote){ modAppliedNote.style.display = 'block'; }
     }
+    setLockedView(applied);
     return applied;
   }
 
@@ -1116,7 +1143,6 @@
       });
       pill.classList.add('active');
       modState[group] = pill.dataset.mod;
-      if(modAppliedNote){ modAppliedNote.style.display = 'none'; }
       renderModPreview();
     });
   });
