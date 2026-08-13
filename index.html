@@ -695,7 +695,7 @@
         <div class="mod-group">
           <div class="mod-group-label">포트폴리오 성격</div>
           <div class="chip-row">
-            <button class="mod-pill active" data-group="portfolio" data-mod="launch">런칭 소식 소구(매거진형)</button>
+            <button class="mod-pill active" data-group="portfolio" data-mod="launch">런칭 소식 소구</button>
             <button class="mod-pill" data-group="portfolio" data-mod="detail">제품 상세 리뷰 · USP 소구</button>
             <button class="mod-pill" data-group="portfolio" data-mod="free">크리에이터 자율</button>
           </div>
@@ -1076,7 +1076,7 @@
 
   var PORTFOLIO_MODULES = {
     launch: {
-      label: '런칭 소식 소구(매거진형)',
+      label: '런칭 소식 소구',
       desc: '신규 컬렉션 출시 소식을 알리는 데 초점을 맞춘 구성입니다.',
       items: [
         '시즌 컬렉션 키워드 1개 이상 언급',
@@ -1201,6 +1201,10 @@
     var ch = CHANNEL_MODULES[modState.channel];
     var f = FORMAT_MODULES[modState.format];
     var p = PORTFOLIO_MODULES[modState.portfolio];
+    var pLabel = p.label;
+    if(modState.portfolio === 'launch' && modState.format === 'blog'){
+      pLabel = p.label + '(매거진형)';
+    }
     if(modChannelTitle){ modChannelTitle.textContent = ch.label; }
     fillChannelCard(ch);
     if(modFormatTitle){ modFormatTitle.textContent = f.label; }
@@ -1222,19 +1226,19 @@
         modThumbNote.style.display = 'none';
       }
     }
-    if(modPortfolioTitle){ modPortfolioTitle.textContent = p.label; }
+    if(modPortfolioTitle){ modPortfolioTitle.textContent = pLabel; }
     if(modPortfolioDesc){ modPortfolioDesc.textContent = p.desc; }
     fillList(modPortfolioList, p.items);
     renderExampleLinks();
     if(modLinkBox){ modLinkBox.textContent = buildModLink(); }
     if(modLinkSummary){
-      modLinkSummary.innerHTML = '선택한 모듈: <strong>' + ch.label + '</strong> · <strong>' + f.label + '</strong> · <strong>' + p.label + '</strong>';
+      modLinkSummary.innerHTML = '선택한 모듈: <strong>' + ch.label + '</strong> · <strong>' + f.label + '</strong> · <strong>' + pLabel + '</strong>';
     }
     if(modLockedBadges){
       modLockedBadges.innerHTML =
         '<span class="mod-locked-badge">' + ch.label + '</span>' +
         '<span class="mod-locked-badge">' + f.label + '</span>' +
-        '<span class="mod-locked-badge">' + p.label + '</span>';
+        '<span class="mod-locked-badge">' + pLabel + '</span>';
     }
   }
 
