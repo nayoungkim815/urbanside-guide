@@ -218,6 +218,13 @@
   .mod-detail-card p{margin:0 0 10px;font-size:13px;color:var(--sub-ink);line-height:1.55;}
   .mod-detail-card ul{margin:0;padding-left:18px;font-size:13px;color:var(--sub-ink);}
   .mod-detail-card li{margin-bottom:6px;}
+  .mod-text-note{
+    margin-top:14px;padding:14px 16px;border-radius:12px;
+    background:var(--bg-soft);color:var(--ink);
+    font-size:12.5px;font-weight:600;line-height:1.6;
+  }
+  .mod-text-note::before{content:"✏️ 텍스트 제목/문안 가이드  ";font-weight:700;color:var(--accent);}
+
   .mod-thumb-note{
     margin-top:14px;padding:14px 16px;border-radius:12px;
     background:var(--accent-soft);color:#0b4f9e;
@@ -732,6 +739,7 @@
           <h4 id="modFormatTitle"></h4>
           <p id="modFormatDesc"></p>
           <ul id="modFormatList"></ul>
+          <div class="mod-text-note" id="modTextNote" style="display:none;"></div>
           <div class="mod-thumb-note" id="modThumbNote" style="display:none;"></div>
         </div>
         <div class="mod-detail-card">
@@ -1013,6 +1021,7 @@
         '자막/캡션에 시즌 키워드 1개 이상 포함',
         '사운드 온 상태로 촬영 권장'
       ],
+      textGuide: '영상 제목 또는 캡션 문구에 \'1,000FP\'를 반드시 기재해주세요.',
       thumbnail: '\'1,000FP\' 문구를 썸네일에서 가장 크게, 첫눈에 들어오도록 배치해주세요. 배경과 톤은 절제된 톤으로 잡아, 고급 다운의 희소성과 기술력이 느껴지도록 구성해주시면 좋습니다.'
     },
     feed: {
@@ -1022,7 +1031,8 @@
         '대표 이미지 1장 + 디테일 컷 2~4장',
         '자연광 촬영 권장, 톤은 너무 과하게 보정하지 않기',
         '캡션에 소재/기능 포인트 1가지 이상 언급'
-      ]
+      ],
+      textGuide: '1,000FP 제품 착용샷을 대표(첫 번째) 이미지로 배치하고, 본문 캡션에도 \'1,000FP\'를 강조하여 반드시 기재해주세요.'
     },
     long: {
       label: '롱폼(유튜브 등)',
@@ -1033,6 +1043,7 @@
         '브랜드/제품명 음성 언급 2회 이상',
         '캡션은 1차 초안 작성 후 전달, 검수 필수'
       ],
+      textGuide: '영상 제목 또는 캡션 문구에 \'1,000FP\'를 반드시 기재해주세요.',
       thumbnail: '\'1,000FP\' 문구를 썸네일에서 가장 크게, 첫눈에 들어오도록 배치해주세요. 배경과 톤은 절제된 톤으로 잡아, 고급 다운의 희소성과 기술력이 느껴지도록 구성해주시면 좋습니다.'
     }
   };
@@ -1097,6 +1108,7 @@
   var modPortfolioDesc = document.getElementById('modPortfolioDesc');
   var modPortfolioList = document.getElementById('modPortfolioList');
   var modExampleRow = document.getElementById('modExampleRow');
+  var modTextNote = document.getElementById('modTextNote');
   var modThumbNote = document.getElementById('modThumbNote');
 
   function buildModLink(){
@@ -1145,6 +1157,14 @@
     if(modFormatTitle){ modFormatTitle.textContent = f.label; }
     if(modFormatDesc){ modFormatDesc.textContent = f.desc; }
     fillList(modFormatList, f.items);
+    if(modTextNote){
+      if(f.textGuide){
+        modTextNote.textContent = f.textGuide;
+        modTextNote.style.display = 'block';
+      } else {
+        modTextNote.style.display = 'none';
+      }
+    }
     if(modThumbNote){
       if(f.thumbnail){
         modThumbNote.textContent = f.thumbnail;
