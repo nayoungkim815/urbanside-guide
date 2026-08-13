@@ -688,13 +688,14 @@
             <button class="mod-pill active" data-group="format" data-mod="short">숏폼(릴스/쇼츠)</button>
             <button class="mod-pill" data-group="format" data-mod="feed">피드형(이미지)</button>
             <button class="mod-pill" data-group="format" data-mod="long">롱폼(유튜브 등)</button>
+            <button class="mod-pill" data-group="format" data-mod="blog">블로그</button>
           </div>
         </div>
 
         <div class="mod-group">
           <div class="mod-group-label">포트폴리오 성격</div>
           <div class="chip-row">
-            <button class="mod-pill active" data-group="portfolio" data-mod="launch">런칭 소식 소구</button>
+            <button class="mod-pill active" data-group="portfolio" data-mod="launch">런칭 소식 소구(매거진형)</button>
             <button class="mod-pill" data-group="portfolio" data-mod="detail">제품 상세 리뷰 · USP 소구</button>
             <button class="mod-pill" data-group="portfolio" data-mod="free">크리에이터 자율</button>
           </div>
@@ -1061,12 +1062,21 @@
       ],
       textGuide: '영상 제목 또는 캡션 문구에 \'1,000FP\'를 반드시 기재해주세요.',
       thumbnail: '\'1,000FP\' 문구를 썸네일에서 가장 크게, 첫눈에 들어오도록 배치해주세요. 배경과 톤은 절제된 톤으로 잡아, 고급 다운의 희소성과 기술력이 느껴지도록 구성해주시면 좋습니다.'
+    },
+    blog: {
+      label: '블로그',
+      desc: '자유 형식의 글 구성. 착용 경험과 정보를 자연스러운 호흡으로 풀어주세요.',
+      items: [
+        '70% — 26FW의 전반적인 착용샷과 소개가 잘 드러나도록 구성 (26FW 링크 포함)',
+        '30% — 카우치포테이토 내 어반사이드 행사장 코스와 분위기가 잘 드러나는 컷'
+      ],
+      textGuide: '포스팅 제목 또는 본문에 \'1,000FP\'를 반드시 기재해주세요.'
     }
   };
 
   var PORTFOLIO_MODULES = {
     launch: {
-      label: '26FW 런칭 소식 소구',
+      label: '런칭 소식 소구(매거진형)',
       desc: '신규 컬렉션 출시 소식을 알리는 데 초점을 맞춘 구성입니다.',
       items: [
         '시즌 컬렉션 키워드 1개 이상 언급',
