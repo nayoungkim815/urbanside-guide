@@ -1263,6 +1263,26 @@
     return applied;
   }
 
+  var CHANNEL_FORMAT_MAP = {
+    instagram: ['short', 'feed'],
+    youtube: ['short', 'long'],
+    blog: ['blog']
+  };
+
+  function filterFormatChipsForChannel(channel){
+    var allowed = CHANNEL_FORMAT_MAP[channel] || Object.keys(FORMAT_MODULES);
+    document.querySelectorAll('.mod-pill[data-group="format"]').forEach(function(pill){
+      var isAllowed = allowed.indexOf(pill.dataset.mod) !== -1;
+      pill.style.display = isAllowed ? '' : 'none';
+    });
+    if(allowed.indexOf(modState.format) === -1){
+      modState.format = allowed[0];
+      document.querySelectorAll('.mod-pill[data-group="format"]').forEach(function(pill){
+        pill.classList.toggle('active', pill.dataset.mod === modState.format);
+      });
+    }
+  }
+
   document.querySelectorAll('.mod-pill').forEach(function(pill){
     pill.addEventListener('click', function(){
       var group = pill.dataset.group;
@@ -1271,11 +1291,13 @@
       });
       pill.classList.add('active');
       modState[group] = pill.dataset.mod;
+      if(group === 'channel'){ filterFormatChipsForChannel(modState.channel); }
       renderModPreview();
     });
   });
 
   applyModParamsFromURL();
+  filterFormatChipsForChannel(modState.channel);
   renderModPreview();
 
   var modCopyBtn = document.getElementById('modCopyBtn');
