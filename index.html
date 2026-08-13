@@ -218,6 +218,13 @@
   .mod-detail-card p{margin:0 0 10px;font-size:13px;color:var(--sub-ink);line-height:1.55;}
   .mod-detail-card ul{margin:0;padding-left:18px;font-size:13px;color:var(--sub-ink);}
   .mod-detail-card li{margin-bottom:6px;}
+  .mod-thumb-note{
+    margin-top:14px;padding:14px 16px;border-radius:12px;
+    background:var(--accent-soft);color:#0b4f9e;
+    font-size:12.5px;font-weight:600;line-height:1.6;
+  }
+  .mod-thumb-note::before{content:"📌 썸네일 가이드  ";font-weight:700;}
+
   .mod-example-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
   .mod-example-btn{
     display:inline-flex;align-items:center;gap:5px;padding:7px 15px;border-radius:999px;
@@ -725,6 +732,7 @@
           <h4 id="modFormatTitle"></h4>
           <p id="modFormatDesc"></p>
           <ul id="modFormatList"></ul>
+          <div class="mod-thumb-note" id="modThumbNote" style="display:none;"></div>
         </div>
         <div class="mod-detail-card">
           <div class="mod-detail-tag">포트폴리오 성격</div>
@@ -1004,7 +1012,8 @@
         '착장 포인트 1~2가지를 명확히 보여주는 컷 위주 구성',
         '자막/캡션에 시즌 키워드 1개 이상 포함',
         '사운드 온 상태로 촬영 권장'
-      ]
+      ],
+      thumbnail: '\'1,000FP\' 문구를 썸네일에서 가장 크게, 첫눈에 들어오도록 배치해주세요. 배경과 톤은 절제된 톤으로 잡아, 고급 다운의 희소성과 기술력이 느껴지도록 구성해주시면 좋습니다.'
     },
     feed: {
       label: '피드형(이미지 포스팅)',
@@ -1023,7 +1032,8 @@
         '소재·기능에 대한 설명 구간을 별도로 포함 (최소 1분 이상)',
         '브랜드/제품명 음성 언급 2회 이상',
         '캡션은 1차 초안 작성 후 전달, 검수 필수'
-      ]
+      ],
+      thumbnail: '\'1,000FP\' 문구를 썸네일에서 가장 크게, 첫눈에 들어오도록 배치해주세요. 배경과 톤은 절제된 톤으로 잡아, 고급 다운의 희소성과 기술력이 느껴지도록 구성해주시면 좋습니다.'
     }
   };
 
@@ -1087,6 +1097,7 @@
   var modPortfolioDesc = document.getElementById('modPortfolioDesc');
   var modPortfolioList = document.getElementById('modPortfolioList');
   var modExampleRow = document.getElementById('modExampleRow');
+  var modThumbNote = document.getElementById('modThumbNote');
 
   function buildModLink(){
     var url = new URL(window.location.href);
@@ -1134,6 +1145,14 @@
     if(modFormatTitle){ modFormatTitle.textContent = f.label; }
     if(modFormatDesc){ modFormatDesc.textContent = f.desc; }
     fillList(modFormatList, f.items);
+    if(modThumbNote){
+      if(f.thumbnail){
+        modThumbNote.textContent = f.thumbnail;
+        modThumbNote.style.display = 'block';
+      } else {
+        modThumbNote.style.display = 'none';
+      }
+    }
     if(modPortfolioTitle){ modPortfolioTitle.textContent = p.label; }
     if(modPortfolioDesc){ modPortfolioDesc.textContent = p.desc; }
     fillList(modPortfolioList, p.items);
