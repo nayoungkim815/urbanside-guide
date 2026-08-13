@@ -211,12 +211,14 @@
     transition:opacity .15s ease;
   }
   .mod-copy-btn:active{opacity:0.8;}
-  .mod-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 4px;}
+  .mod-detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:22px 0 4px;}
   .mod-detail-card{background:var(--bg-soft);border-radius:16px;padding:20px 20px;}
   .mod-detail-tag{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.04em;margin-bottom:8px;text-transform:uppercase;}
   .mod-detail-card h4{margin:0 0 6px;font-size:15px;color:var(--ink);font-weight:700;}
   .mod-detail-card p{margin:0 0 10px;font-size:13px;color:var(--sub-ink);line-height:1.55;}
   .mod-detail-card ul{margin:0;padding-left:18px;font-size:13px;color:var(--sub-ink);}
+  .mod-detail-card h5{margin:14px 0 5px;font-size:12px;font-weight:700;color:var(--ink);}
+  .mod-detail-card h5:first-child{margin-top:0;}
   .mod-detail-card li{margin-bottom:6px;}
   .mod-text-note{
     margin-top:14px;padding:14px 16px;border-radius:12px;
@@ -614,7 +616,7 @@
         <div>
           <div class="sec-tag">02 · Content Guide</div>
           <h2>콘텐츠 가이드라인</h2>
-          <p class="sec-desc">채널을 선택하면 해당 채널의 콘텐츠 방향을 확인할 수 있습니다.</p>
+          <p class="sec-desc">아래 크리에이터별 맞춤 가이드 발송 도구에서 채널·형태·포트폴리오 성격을 선택하면 맞춤 가이드를 확인할 수 있습니다.</p>
         </div>
         <a href="#" class="catalog-link-btn coming-soon" style="flex:none;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#fff;background:var(--ink);padding:10px 18px;border-radius:999px;text-decoration:none;white-space:nowrap;">26FW 어패럴 제품소개서 ↗</a>
       </div>
@@ -643,49 +645,6 @@
         </div>
       </div>
 
-      <h3 class="sub-h">채널별 콘텐츠 가이드</h3>
-      <div class="chip-row">
-        <button class="ch-pill ig active" data-guide="instagram">인스타그램</button>
-        <button class="ch-pill yt" data-guide="youtube">유튜브</button>
-        <button class="ch-pill common" data-guide="blog">블로그</button>
-      </div>
-
-      <div class="guide-card show" data-guide="instagram">
-        <h4>피드 / 릴스</h4>
-        <ul>
-          <li><strong>70%</strong> — 26FW의 전반적인 착용샷과 소개가 잘 드러나도록 구성 (1000FP, 옥타시리즈 착용샷 필수 포함)</li>
-          <li><strong>30%</strong> — 카우치포테이토 내 어반사이드 행사장 코스와 분위기가 잘 드러나는 컷</li>
-        </ul>
-      </div>
-      <div class="guide-card show" data-guide="instagram">
-        <h4>스토리</h4>
-        <ul>
-          <li>어반사이드 어패럴 스토리 2회 이상 업로드 (행사 내 이벤트 참여 명목 제외)</li>
-          <li>스토리 1건 이상 26FW 어패럴 하이퍼링크 스티커 필수 첨부</li>
-        </ul>
-      </div>
-      <div class="guide-card" data-guide="youtube">
-        <h4>영상 콘텐츠</h4>
-        <ul>
-          <li>10분 이상 분량으로 발행</li>
-          <li><strong>70%</strong> — 26FW의 전반적인 착용샷과 소개가 잘 드러나도록 구성 (1000FP, 옥타시리즈 착용샷 필수 포함)</li>
-          <li><strong>30%</strong> — 카우치포테이토 내 어반사이드 행사장 코스와 분위기가 잘 드러나는 컷</li>
-        </ul>
-      </div>
-      <div class="guide-card" data-guide="youtube">
-        <h4>인스타그램 스토리</h4>
-        <ul>
-          <li>어반사이드 어패럴 인스타그램 스토리 2회 이상 업로드(행사 내 이벤트 참여 명목 제외, 스토리 중 1건은 어반사이드 26FW 어패럴 하이퍼링크 스티커 필수 첨부)</li>
-        </ul>
-      </div>
-      <div class="guide-card" data-guide="blog">
-        <h4>블로그</h4>
-        <ul>
-          <li><strong>70%</strong> — 26FW의 전반적인 착용샷과 소개가 잘 드러나도록 구성 (26FW 링크 포함)</li>
-          <li><strong>30%</strong> — 카우치포테이토 내 어반사이드 행사장 코스와 분위기가 잘 드러나는 컷</li>
-        </ul>
-      </div>
-
       <div class="dodont-grid">
         <div class="dodont-card do">
           <div class="dodont-head"><span class="dodont-icon">✓</span><span class="dodont-title">DO</span></div>
@@ -707,12 +666,21 @@
       <h3 class="sub-h">크리에이터별 맞춤 가이드 발송</h3>
 
       <div class="mod-applied-note" id="modAppliedNote" style="display:none;">
-        🎯 이 링크로 전달된 맞춤 가이드입니다 — 아래 두 항목만 확인해주세요.
+        🎯 이 링크로 전달된 맞춤 가이드입니다 — 아래 세 항목만 확인해주세요.
       </div>
       <div class="mod-locked-badges" id="modLockedBadges" style="display:none;"></div>
 
       <div id="modBuilderControls">
-        <p class="body-soft" style="margin-top:-4px;">크리에이터의 콘텐츠 형태와 포트폴리오 성격에 맞는 모듈을 선택하면, 해당 조합만 자동으로 열리는 맞춤 링크가 만들어집니다.</p>
+        <p class="body-soft" style="margin-top:-4px;">크리에이터의 채널·콘텐츠 형태·포트폴리오 성격에 맞는 모듈을 선택하면, 해당 조합만 자동으로 열리는 맞춤 링크가 만들어집니다.</p>
+
+        <div class="mod-group">
+          <div class="mod-group-label">채널</div>
+          <div class="chip-row">
+            <button class="mod-pill active" data-group="channel" data-mod="instagram">인스타그램</button>
+            <button class="mod-pill" data-group="channel" data-mod="youtube">유튜브</button>
+            <button class="mod-pill" data-group="channel" data-mod="blog">블로그</button>
+          </div>
+        </div>
 
         <div class="mod-group">
           <div class="mod-group-label">콘텐츠 형태</div>
@@ -734,6 +702,11 @@
       </div>
 
       <div class="mod-detail-grid">
+        <div class="mod-detail-card">
+          <div class="mod-detail-tag">채널</div>
+          <h4 id="modChannelTitle"></h4>
+          <div id="modChannelSections"></div>
+        </div>
         <div class="mod-detail-card">
           <div class="mod-detail-tag">콘텐츠 형태</div>
           <h4 id="modFormatTitle"></h4>
@@ -1000,16 +973,58 @@
     }, {passive:true});
   });
 
-  document.querySelectorAll('.chip-row .ch-pill').forEach(function(chip){
-    chip.addEventListener('click', function(){
-      document.querySelectorAll('.chip-row .ch-pill').forEach(function(c){ c.classList.remove('active'); });
-      chip.classList.add('active');
-      var g = chip.dataset.guide;
-      document.querySelectorAll('.guide-card').forEach(function(card){
-        card.classList.toggle('show', card.dataset.guide === g);
-      });
-    });
-  });
+  var CHANNEL_MODULES = {
+    instagram: {
+      label: '인스타그램',
+      sections: [
+        {
+          title: '피드 / 릴스',
+          items: [
+            '70% — 26FW의 전반적인 착용샷과 소개가 잘 드러나도록 구성 (1000FP, 옥타시리즈 착용샷 필수 포함)',
+            '30% — 카우치포테이토 내 어반사이드 행사장 코스와 분위기가 잘 드러나는 컷'
+          ]
+        },
+        {
+          title: '스토리',
+          items: [
+            '어반사이드 어패럴 스토리 2회 이상 업로드 (행사 내 이벤트 참여 명목 제외)',
+            '스토리 1건 이상 26FW 어패럴 하이퍼링크 스티커 필수 첨부'
+          ]
+        }
+      ]
+    },
+    youtube: {
+      label: '유튜브',
+      sections: [
+        {
+          title: '영상 콘텐츠',
+          items: [
+            '10분 이상 분량으로 발행',
+            '70% — 26FW의 전반적인 착용샷과 소개가 잘 드러나도록 구성 (1000FP, 옥타시리즈 착용샷 필수 포함)',
+            '30% — 카우치포테이토 내 어반사이드 행사장 코스와 분위기가 잘 드러나는 컷'
+          ]
+        },
+        {
+          title: '인스타그램 스토리',
+          items: [
+            '어반사이드 어패럴 인스타그램 스토리 2회 이상 업로드(행사 내 이벤트 참여 명목 제외, 스토리 중 1건은 어반사이드 26FW 어패럴 하이퍼링크 스티커 필수 첨부)'
+          ]
+        }
+      ]
+    },
+    blog: {
+      label: '블로그',
+      sections: [
+        {
+          title: '블로그',
+          items: [
+            '70% — 26FW의 전반적인 착용샷과 소개가 잘 드러나도록 구성 (26FW 링크 포함)',
+            '30% — 카우치포테이토 내 어반사이드 행사장 코스와 분위기가 잘 드러나는 컷'
+          ]
+        }
+      ]
+    }
+  };
 
   var FORMAT_MODULES = {
     short: {
@@ -1095,13 +1110,15 @@
     }
   };
 
-  var modState = { format: 'short', portfolio: 'launch' };
+  var modState = { channel: 'instagram', format: 'short', portfolio: 'launch' };
   var modLinkBox = document.getElementById('modLinkBox');
   var modLinkSummary = document.getElementById('modLinkSummary');
   var modAppliedNote = document.getElementById('modAppliedNote');
   var modLockedBadges = document.getElementById('modLockedBadges');
   var modBuilderControls = document.getElementById('modBuilderControls');
   var modPreview = document.getElementById('modPreview');
+  var modChannelTitle = document.getElementById('modChannelTitle');
+  var modChannelSections = document.getElementById('modChannelSections');
   var modFormatTitle = document.getElementById('modFormatTitle');
   var modFormatDesc = document.getElementById('modFormatDesc');
   var modFormatList = document.getElementById('modFormatList');
@@ -1115,6 +1132,7 @@
   function buildModLink(){
     var url = new URL(window.location.href);
     url.search = '';
+    url.searchParams.set('channel', modState.channel);
     url.searchParams.set('format', modState.format);
     url.searchParams.set('portfolio', modState.portfolio);
     url.hash = 'agenda-2';
@@ -1152,9 +1170,29 @@
     }
   }
 
+  function fillChannelCard(channelObj){
+    if(!modChannelSections) return;
+    modChannelSections.innerHTML = '';
+    channelObj.sections.forEach(function(sec){
+      var h5 = document.createElement('h5');
+      h5.textContent = sec.title;
+      modChannelSections.appendChild(h5);
+      var ul = document.createElement('ul');
+      sec.items.forEach(function(t){
+        var li = document.createElement('li');
+        li.textContent = t;
+        ul.appendChild(li);
+      });
+      modChannelSections.appendChild(ul);
+    });
+  }
+
   function renderModPreview(){
+    var ch = CHANNEL_MODULES[modState.channel];
     var f = FORMAT_MODULES[modState.format];
     var p = PORTFOLIO_MODULES[modState.portfolio];
+    if(modChannelTitle){ modChannelTitle.textContent = ch.label; }
+    fillChannelCard(ch);
     if(modFormatTitle){ modFormatTitle.textContent = f.label; }
     if(modFormatDesc){ modFormatDesc.textContent = f.desc; }
     fillList(modFormatList, f.items);
@@ -1180,10 +1218,11 @@
     renderExampleLinks();
     if(modLinkBox){ modLinkBox.textContent = buildModLink(); }
     if(modLinkSummary){
-      modLinkSummary.innerHTML = '선택한 모듈: <strong>' + f.label + '</strong> · <strong>' + p.label + '</strong>';
+      modLinkSummary.innerHTML = '선택한 모듈: <strong>' + ch.label + '</strong> · <strong>' + f.label + '</strong> · <strong>' + p.label + '</strong>';
     }
     if(modLockedBadges){
       modLockedBadges.innerHTML =
+        '<span class="mod-locked-badge">' + ch.label + '</span>' +
         '<span class="mod-locked-badge">' + f.label + '</span>' +
         '<span class="mod-locked-badge">' + p.label + '</span>';
     }
@@ -1198,9 +1237,11 @@
 
   function applyModParamsFromURL(){
     var params = new URLSearchParams(window.location.search);
+    var ch = params.get('channel');
     var f = params.get('format');
     var p = params.get('portfolio');
     var applied = false;
+    if(ch && CHANNEL_MODULES[ch]){ modState.channel = ch; applied = true; }
     if(f && FORMAT_MODULES[f]){ modState.format = f; applied = true; }
     if(p && PORTFOLIO_MODULES[p]){ modState.portfolio = p; applied = true; }
     if(applied){
