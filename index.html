@@ -211,6 +211,10 @@
     transition:opacity .15s ease;
   }
   .mod-copy-btn:active{opacity:0.8;}
+  .town-map-row{display:flex;gap:10px;margin-top:10px;}
+  .town-map-row img{flex:1 1 0;min-width:0;width:100%;border-radius:14px;box-shadow:0 0 0 1px var(--line);display:block;}
+  @media (max-width:640px){ .town-map-row{flex-direction:column;} }
+
   .mod-detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:22px 0 4px;}
   .mod-detail-card{background:var(--bg-soft);border-radius:16px;padding:20px 20px;}
   .mod-detail-tag{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.04em;margin-bottom:8px;text-transform:uppercase;}
@@ -808,6 +812,10 @@
 
       <h3 class="sub-h">카우치포테이토 인플루언서 데이 동선</h3>
       <img src="images/influencer-day-floorplan.jpg" alt="카우치포테이토 인플루언서 데이 동선 도면" style="width:100%;border-radius:14px;box-shadow:0 0 0 1px var(--line);display:block;">
+      <div class="town-map-row">
+        <img src="images/urbanside-town-map.jpg" alt="숲포츠 페스티벌 어반사이드 타운 맵">
+        <img src="images/hanok-cafe-layout.png" alt="한옥카페 구조도" style="background:#fff;">
+      </div>
     </section>
 
     <section id="agenda-4">
